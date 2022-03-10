@@ -1,11 +1,14 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { rootSaga } from "./sagas";
+import boardReducer from "../features/Board/slice";
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    board: boardReducer,
+  },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware(),
     sagaMiddleware,

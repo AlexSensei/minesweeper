@@ -1,5 +1,6 @@
 import { useAppDispatch } from "./app/hooks";
-import { getHelp } from "./features/Board/Actions";
+import { getHelp } from "./features/Board/actions";
+import Board from "./features/Board/Board";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -7,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={() => dispatch(getHelp())}>Get help info</button>
+      <Board />
     </div>
   );
 }

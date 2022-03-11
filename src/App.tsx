@@ -1,16 +1,18 @@
-import { useAppDispatch } from "./app/hooks";
-import { getHelp } from "./features/Board/actions";
+import { Typography, Box } from "@mui/material";
+import { styled } from "@mui/system";
 import Board from "./features/Board/Board";
 
 function App() {
-  const dispatch = useAppDispatch();
-
   return (
-    <div className="App">
-      <button onClick={() => dispatch(getHelp())}>Get help info</button>
+    <MainWrapper>
+      <Typography fontWeight="bold" variant="h2" align="center">
+        Minesweeper
+      </Typography>
       <Board />
-    </div>
+    </MainWrapper>
   );
 }
+
+const MainWrapper = styled(Box)``;
 
 export default App;

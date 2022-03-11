@@ -1,7 +1,9 @@
-import { useAppSelector } from "../../app/hooks";
 import { Box } from "@mui/material";
+import { styled } from "@mui/system";
+
+import FieldRow from "./Fields/FieldRow";
 import BoardSettings from "./BoardSettings";
-import styled from "@emotion/styled";
+import { useAppSelector } from "../../app/hooks";
 
 const Board = () => {
   const map = useAppSelector((state) => state.board.map);
@@ -10,12 +12,8 @@ const Board = () => {
     <StyledWrapper display="flex">
       <BoardSettings />
       <Box>
-        {map.map((row, index) => (
-          <Box key={index} display="flex">
-            {row.map((value, rowIndex) => (
-              <StyledBox key={`${index}-${rowIndex}`} value={value} />
-            ))}
-          </Box>
+        {map.map((row: Array<string>, index: number) => (
+          <FieldRow row={row} index={index} key={index} />
         ))}
       </Box>
     </StyledWrapper>
@@ -23,17 +21,10 @@ const Board = () => {
 };
 
 const StyledWrapper = styled(Box)`
-  display: grid;
-  grid-column: 1 1;
-`;
-
-const StyledBox = styled(Box)<{ value: string }>`
-  width: 20px;
-  height: 20px;
-  margin: 1px;
-
-  border: 2px solid gray;
-  background: ${(props) => (props.value !== "1" ? "blue" : "red")};
+  display: flex;
+  > * {
+    margin-right: 30px;
+  }
 `;
 
 export default Board;

@@ -13,14 +13,14 @@ function* getHelp() {
   ws.send("help");
 }
 
-function* startSession({ payload }: PayloadAction<BoardLevel>) {
+export function* startSession({ payload }: PayloadAction<BoardLevel>) {
   const { level } = payload;
 
   ws.send(`new ${level}`);
   ws.send("map");
 }
 
-function* openField({ payload }: PayloadAction<FieldPosition>) {
+export function* openField({ payload }: PayloadAction<FieldPosition>) {
   const { x, y } = payload;
 
   ws.send(`open ${x} ${y}`);

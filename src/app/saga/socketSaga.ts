@@ -7,7 +7,7 @@ import { GAME_STATES } from "../../features/Board/constants";
 
 export let ws: WebSocket;
 
-function createWebsocketConnection() {
+export function createWebsocketConnection() {
   return eventChannel((emit) => {
     const wsUrl: string | undefined = process.env.REACT_APP_WEBSOCKET_BASE_URL;
 

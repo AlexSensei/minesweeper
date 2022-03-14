@@ -46,14 +46,6 @@ const BoardSettings = () => {
 
   return (
     <StyledBoardSettingsWrapper>
-      <StyledPlayButton
-        onClick={() => dispatch(startSession({ level }))}
-        variant="contained"
-      >
-        PLAY
-      </StyledPlayButton>
-      <Typography>Game Settings</Typography>
-      <LevelPicker value={level} handleChange={setLevel} />
       {gameState !== GAME_STATES.PLAYING && (
         <Typography
           variant="h3"
@@ -63,12 +55,21 @@ const BoardSettings = () => {
           {gameState}
         </Typography>
       )}
+      <StyledPlayButton
+        onClick={() => dispatch(startSession({ level }))}
+        variant="contained"
+      >
+        PLAY
+      </StyledPlayButton>
+      <Typography>Game Settings</Typography>
+      <LevelPicker value={level} handleChange={setLevel} />
     </StyledBoardSettingsWrapper>
   );
 };
 
 const StyledBoardSettingsWrapper = styled(Box)`
   width: 300px;
+  text-align: center;
   > * {
     margin: 10px !important;
   }

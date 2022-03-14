@@ -20,6 +20,18 @@ describe("Field testing", () => {
     expect(getByText("1")).toBeInTheDocument();
   });
 
+  it("Should not render field value", () => {
+    const { queryByText } = render(
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Field value={FIELD_VALUES.EMPTY} />
+        </Provider>
+      </ThemeProvider>
+    );
+
+    expect(queryByText(FIELD_VALUES.EMPTY)).not.toBeInTheDocument();
+  });
+
   it("Should render flag field ", () => {
     const { getByTestId } = render(
       <ThemeProvider theme={theme}>
